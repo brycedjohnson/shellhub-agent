@@ -1,7 +1,0 @@
-#!/bin/sh
-
-set -e
-
-command -v openssl >/dev/null 2>&1 || { echo >&2 "ERROR: Please install the openssl utility version 1.0.0 or newer to generate keys."; exit 1; }
-
-openssl "$@"
