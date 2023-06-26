@@ -11,11 +11,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Masterminds/semver"
 	"github.com/gorilla/mux"
 	"github.com/kelseyhightower/envconfig"
 	"github.com/shellhub-io/shellhub/pkg/tunnel"
-	"github.com/shellhub-io/shellhub/selfupdater"
+	
 	"github.com/shellhub-io/shellhub/server"
 	"github.com/shellhub-io/shellhub/pkg/loglevel"
 	log "github.com/sirupsen/logrus"
@@ -100,25 +99,7 @@ func NewAgentServer() *Agent { // nolint:gocyclo
 		os.Exit(1)
 	}
 
-	updater, err := selfupdater.NewUpdater(AgentVersion)
-	if err != nil {
-		log.Panic(err)
-	}
-
-	if err := updater.CompleteUpdate(); err != nil {
-		log.Warning(err)
-		os.Exit(0)
-	}
-
-	currentVersion := new(semver.Version)
-
-	if AgentVersion != "latest" {
-		currentVersion, err = updater.CurrentVersion()
-		if err != nil {
-			log.Panic(err)
-		}
-	}
-
+	
 	log.WithFields(log.Fields{
 		"version": AgentVersion,
 		"mode": func() string {
@@ -263,29 +244,6 @@ func NewAgentServer() *Agent { // nolint:gocyclo
 			}
 		}
 	}()
-
-	// Disable check update in development mode
-	if AgentVersion != "latest" {
-		go func() {
-			for {
-				nextVersion, err := agent.checkUpdate()
-				if err != nil {
-					log.Error(err)
-
-					goto sleep
-				}
-
-				if nextVersion.GreaterThan(currentVersion) {
-					if err := updater.ApplyUpdate(nextVersion); err != nil {
-						log.Error(err)
-					}
-				}
-
-			sleep:
-				time.Sleep(time.Hour * 24)
-			}
-		}()
-	}
 
 	// This hard coded interval will be removed in a follow up change to make use of JWT token expire time.
 	ticker := time.NewTicker(10 * time.Minute)
