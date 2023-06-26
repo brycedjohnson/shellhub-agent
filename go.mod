@@ -13,7 +13,7 @@ require (
 	github.com/mattn/go-shellwords v1.0.12
 	github.com/pkg/errors v0.9.1
 	github.com/pkg/sftp v1.13.5
-	github.com/brycedjohnson/shellhub-agent v0.5.2
+	github.com/shellhub-io/shellhub v0.5.2
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.7.0
 	github.com/stretchr/testify v1.8.4
@@ -53,6 +53,6 @@ require (
 	gotest.tools/v3 v3.0.2 // indirect
 )
 
-replace github.com/brycedjohnson/shellhub-agent => ./
+replace github.com/shellhub-io/shellhub => ./
 
 replace github.com/gliderlabs/ssh => github.com/shellhub-io/ssh v0.0.0-20230224143412-edd48dfd6eea
