@@ -16,11 +16,11 @@ import (
 	"time"
 
 	gliderssh "github.com/gliderlabs/ssh"
-	"github.com/shellhub-io/shellhub/pkg/osauth"
-	"github.com/shellhub-io/shellhub/server/command"
-	"github.com/shellhub-io/shellhub/server/utmp"
-	"github.com/shellhub-io/shellhub/pkg/api/client"
-	"github.com/shellhub-io/shellhub/pkg/models"
+	"github.com/brycedjohnson/shellhub-agent/pkg/osauth"
+	"github.com/brycedjohnson/shellhub-agent/server/command"
+	"github.com/brycedjohnson/shellhub-agent/server/utmp"
+	"github.com/brycedjohnson/shellhub-agent/pkg/api/client"
+	"github.com/brycedjohnson/shellhub-agent/pkg/models"
 	log "github.com/sirupsen/logrus"
 	gossh "golang.org/x/crypto/ssh"
 )

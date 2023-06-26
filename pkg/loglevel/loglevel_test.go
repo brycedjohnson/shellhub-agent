@@ -3,8 +3,8 @@ package loglevel
 import (
 	"testing"
 
-	"github.com/shellhub-io/shellhub/pkg/envs"
-	envMocks "github.com/shellhub-io/shellhub/pkg/envs/mocks"
+	"github.com/brycedjohnson/shellhub-agent/pkg/envs"
+	envMocks "github.com/brycedjohnson/shellhub-agent/pkg/envs/mocks"
 	"github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 )

@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/shellhub-io/shellhub/pkg/revdial"
+	"github.com/brycedjohnson/shellhub-agent/pkg/revdial"
 )
 
 type Tunnel struct {

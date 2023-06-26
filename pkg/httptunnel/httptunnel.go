@@ -9,9 +9,9 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
-	"github.com/shellhub-io/shellhub/pkg/connman"
-	"github.com/shellhub-io/shellhub/pkg/revdial"
-	"github.com/shellhub-io/shellhub/pkg/wsconnadapter"
+	"github.com/brycedjohnson/shellhub-agent/pkg/connman"
+	"github.com/brycedjohnson/shellhub-agent/pkg/revdial"
+	"github.com/brycedjohnson/shellhub-agent/pkg/wsconnadapter"
 )
 
 var upgrader = websocket.Upgrader{

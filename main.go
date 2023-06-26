@@ -13,10 +13,10 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/kelseyhightower/envconfig"
-	"github.com/shellhub-io/shellhub/pkg/tunnel"
+	"github.com/brycedjohnson/shellhub-agent/pkg/tunnel"
 	
-	"github.com/shellhub-io/shellhub/server"
-	"github.com/shellhub-io/shellhub/pkg/loglevel"
+	"github.com/brycedjohnson/shellhub-agent/server"
+	"github.com/brycedjohnson/shellhub-agent/pkg/loglevel"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )

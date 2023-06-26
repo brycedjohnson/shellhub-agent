@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	models "github.com/shellhub-io/shellhub/pkg/models"
+	models "github.com/brycedjohnson/shellhub-agent/pkg/models"
 	mock "github.com/stretchr/testify/mock"
 )
 

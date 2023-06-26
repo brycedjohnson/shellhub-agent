@@ -6,7 +6,7 @@ import (
 	"net"
 	"sync"
 
-	"github.com/shellhub-io/shellhub/pkg/revdial"
+	"github.com/brycedjohnson/shellhub-agent/pkg/revdial"
 )
 
 var ErrNoConnection = errors.New("no connection")

@@ -9,9 +9,9 @@ import (
 
 	resty "github.com/go-resty/resty/v2"
 	"github.com/gorilla/websocket"
-	"github.com/shellhub-io/shellhub/pkg/models"
-	"github.com/shellhub-io/shellhub/pkg/revdial"
-	"github.com/shellhub-io/shellhub/pkg/wsconnadapter"
+	"github.com/brycedjohnson/shellhub-agent/pkg/models"
+	"github.com/brycedjohnson/shellhub-agent/pkg/revdial"
+	"github.com/brycedjohnson/shellhub-agent/pkg/wsconnadapter"
 	log "github.com/sirupsen/logrus"
 )
 

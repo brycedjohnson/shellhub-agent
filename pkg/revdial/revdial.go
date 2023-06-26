@@ -32,8 +32,8 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
-	"github.com/shellhub-io/shellhub/pkg/clock"
-	"github.com/shellhub-io/shellhub/pkg/wsconnadapter"
+	"github.com/brycedjohnson/shellhub-agent/pkg/clock"
+	"github.com/brycedjohnson/shellhub-agent/pkg/wsconnadapter"
 )
 
 var ErrDialerClosed = errors.New("revdial.Dialer closed")

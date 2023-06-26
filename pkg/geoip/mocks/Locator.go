@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	geoip "github.com/shellhub-io/shellhub/pkg/geoip"
+	geoip "github.com/brycedjohnson/shellhub-agent/pkg/geoip"
 	mock "github.com/stretchr/testify/mock"
 
 	net "net"

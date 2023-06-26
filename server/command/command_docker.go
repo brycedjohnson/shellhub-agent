@@ -9,7 +9,7 @@ import (
 	"os/exec"
 	"strconv"
 
-	"github.com/shellhub-io/shellhub/agent/pkg/osauth"
+	"github.com/brycedjohnson/shellhub-agent/agent/pkg/osauth"
 )
 
 func NewCmd(u *osauth.User, shell, term, host string, command ...string) *exec.Cmd {

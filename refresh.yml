@@ -1,10 +1,10 @@
-app_root: /go/src/github.com/shellhub-io/shellhub
+app_root: /go/src/github.com/brycedjohnson/shellhub-agent
 ignored_folders:
 - vendor
 included_extensions:
 - .go
 build_target_path: ""
-build_path: /go/src/github.com/shellhub-io/shellhub/agent
+build_path: /go/src/github.com/brycedjohnson/shellhub-agent
 build_flags: ["-tags", "docker", "-ldflags", "-X main.AgentVersion=latest"]
 build_delay: 200ns
 binary_name: agent

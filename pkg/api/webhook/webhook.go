@@ -12,8 +12,8 @@ import (
 
 	"github.com/go-resty/resty/v2"
 	"github.com/kelseyhightower/envconfig"
-	client "github.com/shellhub-io/shellhub/pkg/api/internalclient"
-	"github.com/shellhub-io/shellhub/pkg/uuid"
+	client "github.com/brycedjohnson/shellhub-agent/pkg/api/internalclient"
+	"github.com/brycedjohnson/shellhub-agent/pkg/uuid"
 	"github.com/sirupsen/logrus"
 )
 

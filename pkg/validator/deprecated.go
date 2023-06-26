@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/go-playground/validator/v10"
-	"github.com/shellhub-io/shellhub/pkg/models"
+	"github.com/brycedjohnson/shellhub-agent/pkg/models"
 )
 
 var (

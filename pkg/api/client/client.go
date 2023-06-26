@@ -9,7 +9,7 @@ import (
 	"net/url"
 
 	resty "github.com/go-resty/resty/v2"
-	"github.com/shellhub-io/shellhub/pkg/models"
+	"github.com/brycedjohnson/shellhub-agent/pkg/models"
 	"github.com/sirupsen/logrus"
 )
 

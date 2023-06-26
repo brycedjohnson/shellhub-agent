@@ -8,11 +8,11 @@ import (
 
 	"github.com/Masterminds/semver"
 	"github.com/pkg/errors"
-	"github.com/shellhub-io/shellhub/pkg/keygen"
-	"github.com/shellhub-io/shellhub/pkg/sysinfo"
-	"github.com/shellhub-io/shellhub/pkg/api/client"
-	"github.com/shellhub-io/shellhub/pkg/models"
-	"github.com/shellhub-io/shellhub/pkg/revdial"
+	"github.com/brycedjohnson/shellhub-agent/pkg/keygen"
+	"github.com/brycedjohnson/shellhub-agent/pkg/sysinfo"
+	"github.com/brycedjohnson/shellhub-agent/pkg/api/client"
+	"github.com/brycedjohnson/shellhub-agent/pkg/models"
+	"github.com/brycedjohnson/shellhub-agent/pkg/revdial"
 )
 
 type Agent struct {

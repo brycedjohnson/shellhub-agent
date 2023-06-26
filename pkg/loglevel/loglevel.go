@@ -1,7 +1,7 @@
 package loglevel
 
 import (
-	"github.com/shellhub-io/shellhub/pkg/envs"
+	"github.com/brycedjohnson/shellhub-agent/pkg/envs"
 	"github.com/sirupsen/logrus"
 )
 
