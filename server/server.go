@@ -68,7 +68,6 @@ func NewServer(api client.Client, authData *models.DeviceAuthResponse, privateKe
 	}
 
 	server.sshd = &gliderssh.Server{
-		PasswordHandler:        server.passwordHandler,
 		PublicKeyHandler:       server.publicKeyHandler,
 		Handler:                server.sessionHandler,
 		SessionRequestCallback: server.sessionRequestCallback,
@@ -331,27 +330,6 @@ func (s *Server) sessionHandler(session gliderssh.Session) {
 			"Raw command": session.RawCommand(),
 		}).Info("Command ended")
 	}
-}
-
-func (s *Server) passwordHandler(ctx gliderssh.Context, pass string) bool {
-	log := log.WithFields(log.Fields{
-		"user": ctx.User(),
-	})
-	var ok bool
-
-	if s.singleUserPassword == "" {
-		ok = osauth.AuthUser(ctx.User(), pass)
-	} else {
-		ok = osauth.VerifyPasswordHash(s.singleUserPassword, pass)
-	}
-
-	if ok {
-		log.Info("Accepted password")
-	} else {
-		log.Info("Failed password")
-	}
-
-	return ok
 }
 
 func (s *Server) publicKeyHandler(ctx gliderssh.Context, key gliderssh.PublicKey) bool {
