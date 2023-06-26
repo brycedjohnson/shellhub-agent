@@ -1,4 +1,4 @@
-module github.com/shellhub-io/shellhub/agent
+module github.com/brycedjohnson/shellhub-agent
 
 go 1.20
 
