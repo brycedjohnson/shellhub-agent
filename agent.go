@@ -6,8 +6,8 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/Masterminds/semver"
 	"github.com/pkg/errors"
+	log "github.com/sirupsen/logrus"
 	"github.com/brycedjohnson/shellhub-agent/pkg/keygen"
 	"github.com/brycedjohnson/shellhub-agent/pkg/sysinfo"
 	"github.com/brycedjohnson/shellhub-agent/pkg/api/client"
@@ -92,15 +92,16 @@ func (a *Agent) readPublicKey() error {
 
 // generateDeviceIdentity generates device identity.
 func (a *Agent) generateDeviceIdentity() error {
+	log.Info("generateDeviceIdentity")
+
 	// priorize identity from env
 	if id := a.opts.PreferredIdentity; id != "" {
 		a.Identity = &models.DeviceIdentity{
 			MAC: id,
 		}
-
+		log.Info("PreferredIdentity: %s", id)
 		return nil
 	}
-
 	// get identity from network interface
 	iface, err := sysinfo.PrimaryInterface()
 	if err != nil {
@@ -110,6 +111,7 @@ func (a *Agent) generateDeviceIdentity() error {
 	a.Identity = &models.DeviceIdentity{
 		MAC: iface.HardwareAddr.String(),
 	}
+	log.Info("PreferredIdentity MAC: ", a.Identity)
 
 	return nil
 }
@@ -130,16 +132,6 @@ func (a *Agent) loadDeviceInfo() error {
 	}
 
 	return nil
-}
-
-// checkUpdate check for agent updates.
-func (a *Agent) checkUpdate() (*semver.Version, error) {
-	info, err := a.cli.GetInfo(AgentVersion)
-	if err != nil {
-		return nil, err
-	}
-
-	return semver.NewVersion(info.Version)
 }
 
 // probeServerInfo probe server information.

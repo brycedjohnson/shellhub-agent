@@ -3,7 +3,6 @@ module github.com/brycedjohnson/shellhub-agent
 go 1.20
 
 require (
-	github.com/Masterminds/semver v1.5.0
 	github.com/creack/pty v1.1.18
 	github.com/gliderlabs/ssh v0.3.5
 	github.com/go-playground/validator/v10 v10.11.2
