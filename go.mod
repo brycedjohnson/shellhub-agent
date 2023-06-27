@@ -54,6 +54,6 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/shellhub-io/shellhub => ./
+replace github.com/brycedjohnson/shellhub-agent => ./
 
 replace github.com/gliderlabs/ssh => github.com/shellhub-io/ssh v0.0.0-20230224143412-edd48dfd6eea
