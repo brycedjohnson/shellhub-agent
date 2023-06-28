@@ -14,8 +14,8 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/kelseyhightower/envconfig"
 	"github.com/brycedjohnson/shellhub-agent/pkg/tunnel"
-	
 	"github.com/brycedjohnson/shellhub-agent/server"
+
 	"github.com/brycedjohnson/shellhub-agent/pkg/loglevel"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -284,16 +284,6 @@ func main() {
 			if err := NewAgentServer().probeServerInfo(); err != nil {
 				log.Fatal(err)
 			}
-		},
-	})
-
-	rootCmd.AddCommand(&cobra.Command{ // nolint: exhaustruct
-		Use:   "sftp",
-		Short: "Starts the SFTP server",
-		Long: `Starts the SFTP server. This command is used internally by the agent and should not be used directly.
-It is initialized by the agent when a new SFTP session is created.`,
-		Run: func(cmd *cobra.Command, args []string) {
-			NewSFTPServer()
 		},
 	})
 
