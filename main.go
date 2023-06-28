@@ -1,9 +1,7 @@
 package main
 
 import (
-	"errors"
 	"fmt"
-	"io"
 	"net"
 	"net/http"
 	"os"
@@ -151,63 +149,6 @@ func NewAgentServer() *Agent { // nolint:gocyclo
 		serv.HandleConn(conn)
 
 		conn.Close()
-	}
-	tun.HTTPHandler = func(w http.ResponseWriter, r *http.Request) {
-		replyError := func(err error, msg string, code int) {
-			log.WithError(err).WithFields(log.Fields{
-				"remote":    r.RemoteAddr,
-				"namespace": r.Header.Get("X-Namespace"),
-				"path":      r.Header.Get("X-Path"),
-				"version":   AgentVersion,
-			}).Error(msg)
-
-			http.Error(w, msg, code)
-		}
-
-		in, err := net.Dial("tcp", ":80")
-		if err != nil {
-			replyError(err, "failed to connect to HTTP the server on device", http.StatusInternalServerError)
-
-			return
-		}
-
-		defer in.Close()
-
-		url, err := r.URL.Parse(r.Header.Get("X-Path"))
-		if err != nil {
-			replyError(err, "failed to parse URL", http.StatusInternalServerError)
-
-			return
-		}
-
-		r.URL.Scheme = "http"
-		r.URL = url
-
-		if err := r.Write(in); err != nil {
-			replyError(err, "failed to write request to the server on device", http.StatusInternalServerError)
-
-			return
-		}
-
-		ctr := http.NewResponseController(w)
-		out, _, err := ctr.Hijack()
-		if err != nil {
-			replyError(err, "failed to hijack connection", http.StatusInternalServerError)
-
-			return
-		}
-
-		defer out.Close() // nolint:errcheck
-
-		if _, err := io.Copy(out, in); errors.Is(err, io.ErrUnexpectedEOF) {
-			replyError(err, "failed to copy response from device service to client", http.StatusInternalServerError)
-
-			return
-		}
-	}
-	tun.CloseHandler = func(w http.ResponseWriter, r *http.Request) {
-		vars := mux.Vars(r)
-		serv.CloseSession(vars["id"])
 	}
 
 	serv.SetDeviceName(agent.authData.Name)
