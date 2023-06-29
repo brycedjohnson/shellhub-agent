@@ -99,7 +99,7 @@ func (a *Agent) generateDeviceIdentity() error {
 		a.Identity = &models.DeviceIdentity{
 			MAC: id,
 		}
-		log.Info("PreferredIdentity: %s", id)
+		log.Info("PreferredIdentity: ", id)
 		return nil
 	}
 	// get identity from network interface

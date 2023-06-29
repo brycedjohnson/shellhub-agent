@@ -3,7 +3,6 @@ package models
 import (
 	"time"
 
-	jwt "github.com/golang-jwt/jwt/v4"
 )
 
 type DeviceStatus string
@@ -38,13 +37,6 @@ type Device struct {
 	Acceptable       bool            `json:"acceptable" bson:"acceptable,omitempty"`
 }
 
-type DeviceAuthClaims struct {
-	UID string `json:"uid"`
-
-	AuthClaims           `mapstruct:",squash"`
-	jwt.RegisteredClaims `mapstruct:",squash"`
-}
-
 type DeviceAuthRequest struct {
 	Info     *DeviceInfo `json:"info"`
 	Sessions []string    `json:"sessions,omitempty"`
@@ -77,19 +69,8 @@ type DeviceInfo struct {
 	Platform   string `json:"platform"`
 }
 
-type ConnectedDevice struct {
-	UID      string    `json:"uid"`
-	TenantID string    `json:"tenant_id" bson:"tenant_id"`
-	LastSeen time.Time `json:"last_seen" bson:"last_seen"`
-	Status   string    `json:"status" bson:"status"`
-}
-
 type DevicePosition struct {
 	Latitude  float64 `json:"latitude" bson:"latitude"`
 	Longitude float64 `json:"longitude" bson:"longitude"`
 }
 
-type DeviceRemoved struct {
-	Device    *Device   `json:"device" bson:"device"`
-	Timestamp time.Time `json:"timestamp" bson:"timestamp"`
-}
