@@ -5,7 +5,7 @@ import (
 )
 
 func SetLogLevel() {
-	level := logrus.InfoLevel
+	level := logrus.TraceLevel
 
 	logrus.WithField("log_level", level.String()).Info("Setting log level")
 	logrus.SetLevel(level)
